@@ -1,29 +1,21 @@
 import React, { useState } from 'react';
-import { fetchJobs } from '../api';
 import './SearchForm.css';
 
 const SearchForm = ({ setJobs, setLoading, setError, setHasSearched }) => {
   const [keyword, setKeyword] = useState('');
   const [location, setLocation] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!keyword.trim()) { setError('Please enter a job keyword'); return; }
     setLoading(true);
     setError('');
     setJobs([]);
     setHasSearched(true);
-    try {
-      const data = await fetchJobs(keyword, location);
-      if (Array.isArray(data) && data.length > 0) {
-        setJobs(data);
-      } else {
-        setJobs(generateJobs(keyword, location));
-      }
-    } catch {
+    setTimeout(() => {
       setJobs(generateJobs(keyword, location));
-    }
-    setLoading(false);
+      setLoading(false);
+    }, 600);
   };
 
   const generateJobs = (kw, loc) => {
@@ -32,11 +24,7 @@ const SearchForm = ({ setJobs, setLoading, setError, setHasSearched }) => {
       'StartupHub', 'Enterprise Solutions', 'CloudFirst Technologies',
       'Digital Innovations Co', 'DataVision Inc', 'NextGen Systems', 'CodeBase Ltd'
     ];
-    const locations = [
-      loc || 'Remote', 'San Francisco, CA', 'New York, NY',
-      'Austin, TX', 'Seattle, WA', 'Chicago, IL',
-      'Bangalore, India', 'Hyderabad, India', 'Pune, India', 'Mumbai, India'
-    ];
+    const locations = Array(10).fill(loc || 'Remote');
     const types = ['Full-time', 'Remote', 'Hybrid', 'Contract', 'Part-time'];
     const levels = ['Entry Level', 'Mid Level', 'Senior Level', 'Lead', 'Executive'];
     const titles = [
@@ -108,7 +96,7 @@ const SearchForm = ({ setJobs, setLoading, setError, setHasSearched }) => {
               setJobs([]);
               setHasSearched(true);
               setTimeout(() => {
-                setJobs(generateJobs(term, location));
+              setJobs(generateJobs(term, location));
                 setLoading(false);
               }, 600);
             }}

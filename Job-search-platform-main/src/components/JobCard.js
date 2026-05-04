@@ -5,15 +5,8 @@ import './JobCard.css';
 const JobCard = ({ job, index, onQuickApply, onChatWithRecruiter }) => {
   const navigate = useNavigate();
 
-  const handleApplyClick = () => {
-    navigate('/apply', { state: { job } });
-  };
+  const goToDetail = () => navigate('/job-detail', { state: { job } });
 
-  const handleQuickApply = () => {
-    if (onQuickApply) {
-      onQuickApply(job);
-    }
-  };
   const formatSalary = (min, max) => {
     if (!min && !max) return 'Competitive Salary';
     if (min && max) return `$${min.toLocaleString()} - $${max.toLocaleString()}`;
@@ -39,56 +32,30 @@ const JobCard = ({ job, index, onQuickApply, onChatWithRecruiter }) => {
   };
 
   return (
-    <div 
-      className="job-card"
-      style={{ animationDelay: `${index * 0.1}s` }}
-    >
+    <div className="job-card" style={{ animationDelay: `${index * 0.1}s` }}>
       <div className="job-header">
-        <h3 className="job-title">{job.title}</h3>
+        <h3 className="job-title clickable" onClick={goToDetail}>{job.title}</h3>
         <div className="company-info">
-          <span className="company-name">
-            Company: {job.company?.display_name || 'Company Name'}
+          <span className="company-name clickable" onClick={() => navigate('/companies')}>
+            🏢 {job.company?.display_name || 'Company Name'}
           </span>
-          <span className="job-location">
-            Location: {job.location?.display_name || 'Location'}
-          </span>
+          <span className="job-location">📍 {job.location?.display_name || 'Location'}</span>
         </div>
       </div>
-      
+
       <div className="job-body">
         <div className="job-stats">
-          <span className="job-type">Type: {getJobType()}</span>
-          <span className="job-experience">Level: {getExperience()}</span>
+          <span className="job-type">💼 {getJobType()}</span>
+          <span className="job-experience">🎯 {getExperience()}</span>
         </div>
-        
-        <p className="job-description">
-          {truncateText(job.description)}
-        </p>
-        
-        <div className="job-salary">
-          Salary: {formatSalary(job.salary_min, job.salary_max)}
-        </div>
+        <p className="job-description">{truncateText(job.description)}</p>
+        <div className="job-salary">💰 {formatSalary(job.salary_min, job.salary_max)}</div>
       </div>
-      
+
       <div className="job-footer">
-        <button 
-          className="quick-apply-btn"
-          onClick={handleQuickApply}
-        >
-          ⚡ Quick Apply
-        </button>
-        <button 
-          className="chat-recruiter-btn"
-          onClick={onChatWithRecruiter}
-        >
-          💬 Chat
-        </button>
-        <button 
-          className="apply-button"
-          onClick={handleApplyClick}
-        >
-          Full Application
-        </button>
+        <button className="quick-apply-btn" onClick={() => onQuickApply && onQuickApply(job)}>⚡ Quick Apply</button>
+        <button className="chat-recruiter-btn" onClick={onChatWithRecruiter}>💬 Chat</button>
+        <button className="apply-button" onClick={goToDetail}>View Details</button>
       </div>
     </div>
   );

@@ -137,7 +137,6 @@ function HomePage({ user, onLogout }) {
             
             {(!loading && jobs.length === 0 && hasSearched) && (
               <div className="no-jobs-content">
-                <CourseAds userSkills={user?.skills || []} />
                 <ContentFiller />
               </div>
             )}
@@ -145,13 +144,14 @@ function HomePage({ user, onLogout }) {
             {(!loading && jobs.length > 0) && (
               <ContentFiller />
             )}
+
+            <div style={{ padding: '1.25rem' }}>
+              <CourseAds userSkills={user?.skills || []} />
+            </div>
           </div>
         </main>
         
         <aside className="right-sidebar">
-          <div className="sidebar-section">
-            <CourseAds userSkills={user?.skills || []} />
-          </div>
           <RightSidebar />
           <div className="sidebar-section">
             <JobAlerts />

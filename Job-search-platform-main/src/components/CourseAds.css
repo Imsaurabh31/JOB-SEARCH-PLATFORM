@@ -2,31 +2,39 @@
 .course-ads {
   background: white;
   border-radius: 14px;
-  padding: 1.25rem;
+  padding: 1.5rem;
   box-shadow: 0 2px 12px rgba(99,102,241,0.08);
   border: 1px solid #e2e8f0;
+  width: 100%;
 }
-.ads-header { text-align: center; margin-bottom: 1.25rem; }
-.ads-header h3 { color: #6366f1; margin-bottom: 0.4rem; font-size: 1.1rem; font-weight: 700; }
-.ads-header p { color: #64748b; font-size: 0.85rem; }
 
-.courses-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+.ads-header { text-align: center; margin-bottom: 1.5rem; }
+.ads-header h3 { color: #6366f1; margin-bottom: 0.4rem; font-size: 1.2rem; font-weight: 700; }
+.ads-header p { color: #64748b; font-size: 0.88rem; }
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
 
 .course-card {
   background: #f8fafc;
-  border-radius: 12px;
-  padding: 1rem;
+  border-radius: 14px;
+  padding: 1.25rem;
   border: 1.5px solid #e2e8f0;
   transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .course-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 3px;
+  height: 4px;
   background: linear-gradient(90deg, #6366f1, #a855f7, #f59e0b);
 }
 .course-card:hover {
@@ -36,37 +44,120 @@
   background: white;
 }
 
-.course-image { font-size: 2rem; text-align: center; margin-bottom: 0.75rem; }
-.course-content h4 { color: #1e293b; font-size: 0.95rem; margin-bottom: 0.25rem; font-weight: 700; }
-.provider { color: #64748b; font-size: 0.8rem; margin-bottom: 0.6rem; }
-.course-details { display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-size: 0.78rem; color: #475569; }
+.course-image {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
 
-.skills-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.75rem; }
+.course-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.course-content h4 {
+  color: #1e293b;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.provider {
+  color: #6366f1;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.course-desc {
+  color: #64748b;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.course-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: #475569;
+}
+
+.course-details span {
+  background: #f1f5f9;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
 .skill-tag {
   background: #eef2ff;
   color: #6366f1;
-  padding: 0.15rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 20px;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 600;
+  border: 1px solid #c7d2fe;
 }
 
-.course-footer { display: flex; justify-content: space-between; align-items: center; }
-.price { font-weight: 800; color: #059669; font-size: 1rem; }
+.course-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.price {
+  font-weight: 800;
+  color: #059669;
+  font-size: 1.05rem;
+}
+
+.original-price {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
 
 .enroll-btn {
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: white;
   border: none;
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1.1rem;
   border-radius: 20px;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 .enroll-btn:hover:not(:disabled) {
   transform: scale(1.05);
   box-shadow: 0 4px 16px rgba(99,102,241,0.35);
 }
-.enroll-btn.enrolled { background: linear-gradient(135deg, #10b981, #059669); cursor: default; }
+.enroll-btn.enrolled {
+  background: linear-gradient(135deg, #10b981, #059669);
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .courses-grid { grid-template-columns: 1fr; }
+}

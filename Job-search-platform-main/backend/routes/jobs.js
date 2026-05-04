@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     // if no DB results, return dynamic generated jobs
     if (jobs.length === 0 && keyword) {
       const companies = ['TechCorp Solutions','Innovation Labs','Global Tech Partners','StartupHub','Enterprise Solutions','CloudFirst Technologies','Digital Innovations','DataVision Inc','NextGen Systems','CodeBase Ltd'];
-      const locs = [location||'Remote','San Francisco, CA','New York, NY','Austin, TX','Seattle, WA','Chicago, IL','Bangalore, India','Hyderabad, India','Pune, India','Mumbai, India'];
+      const locs = Array(10).fill(location || 'Remote');
       const types = ['Full-time','Remote','Hybrid','Contract','Part-time'];
       const levels = ['Entry Level','Mid Level','Senior Level','Lead','Executive'];
       const titles = [`${keyword} Developer`,`Senior ${keyword} Engineer`,`${keyword} Specialist`,`Junior ${keyword} Developer`,`${keyword} Team Lead`,`Full Stack ${keyword} Developer`,`${keyword} Architect`,`${keyword} Consultant`,`${keyword} Analyst`,`Principal ${keyword} Engineer`];

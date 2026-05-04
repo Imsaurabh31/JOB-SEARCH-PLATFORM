@@ -38,6 +38,13 @@
   line-height: 1.3;
 }
 
+.clickable {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.job-title.clickable:hover { color: #6366f1; text-decoration: underline; }
+.company-name.clickable:hover { background: #eef2ff; color: #6366f1; cursor: pointer; }
+
 .company-info { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
 
 .company-name,

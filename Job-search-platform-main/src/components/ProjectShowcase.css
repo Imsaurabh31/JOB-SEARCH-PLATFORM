@@ -188,7 +188,10 @@
 .frame-body {
   width: 100%;
   background: #f1f5f9;
-  line-height: 0;
+  line-height: normal;
+  max-height: 520px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* SVG fills full width */
@@ -284,8 +287,19 @@
 }
 .project-stats h2 { font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-.stat-item h3 { font-size: 2.8rem; font-weight: 900; margin-bottom: 0.5rem; }
-.stat-item p { font-size: 1rem; opacity: 0.85; }
+.stat-item { padding: 1rem; }
+.stat-item h3 { font-size: 2.5rem; font-weight: 900; margin-bottom: 0.5rem; white-space: nowrap; }
+.stat-item p { font-size: 0.95rem; opacity: 0.85; }
+
+.showcase-footer-note {
+  text-align: center;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+}
+.showcase-footer-note p { color: #64748b; font-size: 0.9rem; font-weight: 500; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -300,4 +314,5 @@
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .screenshot-meta { flex-direction: column; align-items: flex-start; }
   .project-stats { padding: 2.5rem 1rem; }
+  .stat-item h3 { font-size: 1.8rem; }
 }

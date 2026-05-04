@@ -54,7 +54,7 @@ const CompaniesPage = () => {
                   padding: '0.75rem',
                   borderRadius: '6px',
                   cursor: 'pointer'
-                }} onClick={() => navigate('/jobs')}>
+                }} onClick={() => navigate('/', { state: { searchCompany: company.name } })}>
                   View Jobs
                 </button>
                 <button style={{

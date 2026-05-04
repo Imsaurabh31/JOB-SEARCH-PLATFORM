@@ -2,131 +2,202 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProjectShowcase.css';
 
-/* ── inline SVG mockups ── */
+/* ── inline HTML mockups ── */
 const HomepageMockup = () => (
-  <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" className="mockup-svg">
-    {/* browser chrome */}
-    <rect width="900" height="520" rx="12" fill="#f1f5f9"/>
-    <rect width="900" height="40" rx="12" fill="#1e293b"/>
-    <rect y="28" width="900" height="12" fill="#1e293b"/>
-    <circle cx="20" cy="20" r="6" fill="#ef4444"/>
-    <circle cx="38" cy="20" r="6" fill="#f59e0b"/>
-    <circle cx="56" cy="20" r="6" fill="#10b981"/>
-    <rect x="80" y="10" width="640" height="20" rx="10" fill="#334155"/>
-    {/* header */}
-    <rect x="0" y="40" width="900" height="50" fill="#fff" />
-    <rect x="16" y="52" width="90" height="26" rx="6" fill="#6366f1"/>
-    <text x="61" y="70" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold">JobFinder</text>
-    <rect x="130" y="58" width="50" height="14" rx="4" fill="#eef2ff"/>
-    <rect x="192" y="58" width="60" height="14" rx="4" fill="#eef2ff"/>
-    <rect x="264" y="58" width="50" height="14" rx="4" fill="#eef2ff"/>
-    <rect x="326" y="58" width="55" height="14" rx="4" fill="#eef2ff"/>
-    <rect x="650" y="54" width="140" height="22" rx="11" fill="#f1f5f9"/>
-    <rect x="810" y="54" width="70" height="22" rx="11" fill="#6366f1"/>
-    {/* hero search */}
-    <rect x="0" y="90" width="900" height="100" fill="url(#heroGrad)"/>
-    <defs>
-      <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#6366f1"/>
-        <stop offset="100%" stopColor="#a855f7"/>
-      </linearGradient>
-    </defs>
-    <rect x="60" y="108" width="480" height="32" rx="8" fill="rgba(255,255,255,0.9)"/>
-    <rect x="556" y="108" width="160" height="32" rx="8" fill="rgba(255,255,255,0.9)"/>
-    <rect x="732" y="108" width="110" height="32" rx="8" fill="#f59e0b"/>
-    <text x="787" y="129" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">Search Jobs</text>
-    <text x="300" y="129" fill="#94a3b8" fontSize="11">🔍  Java Developer, React, Python...</text>
-    {/* stats bar */}
-    <rect x="0" y="190" width="900" height="44" fill="#6366f1"/>
-    {['3.2M+ Jobs','50K+ Companies','40M+ Seekers','1M+ Resumes'].map((t,i)=>(
-      <text key={i} x={112+i*220} y="217" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">{t}</text>
-    ))}
-    {/* 3-col layout */}
-    {/* left sidebar */}
-    <rect x="10" y="244" width="180" height="266" rx="10" fill="white"/>
-    <circle cx="100" cy="278" r="24" fill="#6366f1"/>
-    <text x="100" y="283" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">K</text>
-    <rect x="30" y="312" width="140" height="8" rx="4" fill="#e2e8f0"/>
-    <rect x="50" y="326" width="100" height="6" rx="3" fill="#e2e8f0"/>
-    {[0,1,2,3].map(i=><rect key={i} x="20" y={348+i*28} width="160" height="18" rx="6" fill="#f1f5f9"/>)}
-    {/* main content */}
-    <rect x="200" y="244" width="500" height="266" rx="10" fill="white"/>
-    {[0,1,2,3].map(i=>(
-      <g key={i}>
-        <rect x="216" y={254+i*62} width="230" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1"/>
-        <rect x="226" y={262+i*62} width="120" height="10" rx="3" fill="#6366f1"/>
-        <rect x="226" y={278+i*62} width="80" height="7" rx="3" fill="#e2e8f0"/>
-        <rect x="226" y={291+i*62} width="60" height="7" rx="3" fill="#e2e8f0"/>
-        <rect x="456" y={254+i*62} width="230" height="52" rx="8" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1"/>
-        <rect x="466" y={262+i*62} width="120" height="10" rx="3" fill="#8b5cf6"/>
-        <rect x="466" y={278+i*62} width="80" height="7" rx="3" fill="#e2e8f0"/>
-        <rect x="466" y={291+i*62} width="60" height="7" rx="3" fill="#e2e8f0"/>
-      </g>
-    ))}
-    {/* right sidebar */}
-    <rect x="710" y="244" width="180" height="266" rx="10" fill="white"/>
-    {[0,1,2].map(i=><rect key={i} x="720" y={254+i*56} width="160" height="46" rx="8" fill="#f1f5f9"/>)}
-    <rect x="720" y="424" width="160" height="76" rx="8" fill="url(#heroGrad)"/>
-  </svg>
+  <div style={{ background: '#f1f5f9', fontFamily: 'Inter, sans-serif', fontSize: '12px' }}>
+    {/* Header */}
+    <div style={{ background: '#fff', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ background: '#6366f1', color: 'white', padding: '4px 12px', borderRadius: '6px', fontWeight: 700 }}>JobFinder Pro</div>
+        {['Jobs','Companies','Services','Resume','Skills','Salary'].map(n => <span key={n} style={{ color: '#475569', fontWeight: 500 }}>{n}</span>)}
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ background: '#f1f5f9', padding: '4px 12px', borderRadius: '20px', color: '#64748b' }}>🔍 Search...</div>
+        <div style={{ background: '#6366f1', color: 'white', padding: '4px 12px', borderRadius: '20px', fontWeight: 600 }}>K</div>
+      </div>
+    </div>
+    {/* Stats Bar */}
+    <div style={{ background: '#6366f1', padding: '8px', display: 'flex', justifyContent: 'space-around' }}>
+      {['3.2M+ Jobs','50K+ Companies','40M+ Seekers','1M+ Resumes'].map(s => <span key={s} style={{ color: 'white', fontWeight: 700 }}>{s}</span>)}
+    </div>
+    {/* Search Section */}
+    <div style={{ background: 'linear-gradient(135deg,#6366f1,#a855f7)', padding: '20px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+      <input readOnly placeholder='🔍 Java Developer, React, Python...' style={{ flex: 2, padding: '8px 12px', borderRadius: '8px', border: 'none', fontSize: '12px' }} />
+      <input readOnly placeholder='📍 City or Remote...' style={{ flex: 1, padding: '8px 12px', borderRadius: '8px', border: 'none', fontSize: '12px' }} />
+      <button style={{ background: '#f59e0b', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer' }}>🔍 Search Jobs</button>
+    </div>
+    {/* 3 Column Layout */}
+    <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr 200px', gap: '10px', padding: '10px' }}>
+      {/* Left Sidebar */}
+      <div style={{ background: 'white', borderRadius: '10px', padding: '12px', border: '1px solid #e2e8f0' }}>
+        <div style={{ textAlign: 'center', marginBottom: '10px' }}>
+          <div style={{ width: '40px', height: '40px', background: '#6366f1', borderRadius: '50%', margin: '0 auto 6px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700, fontSize: '16px' }}>K</div>
+          <div style={{ fontWeight: 700, color: '#1e293b' }}>Khushi Jha</div>
+          <div style={{ color: '#64748b', fontSize: '11px' }}>Job Seeker</div>
+          <div style={{ background: '#e2e8f0', borderRadius: '4px', height: '6px', margin: '6px 0' }}>
+            <div style={{ background: '#6366f1', width: '75%', height: '100%', borderRadius: '4px' }}></div>
+          </div>
+          <div style={{ fontSize: '10px', color: '#64748b' }}>Profile 75% complete</div>
+        </div>
+        <div style={{ fontWeight: 700, color: '#1e293b', marginBottom: '6px' }}>Quick Access</div>
+        {[['🎯','My Applications','12'],['💼','Saved Jobs','8'],['🔔','Job Alerts','3'],['📊','Profile Views','45']].map(([icon,label,count]) => (
+          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '5px', borderRadius: '6px', background: '#f8fafc', marginBottom: '4px' }}>
+            <span>{icon}</span><span style={{ flex: 1, color: '#475569' }}>{label}</span><span style={{ background: '#eef2ff', color: '#6366f1', padding: '1px 6px', borderRadius: '10px', fontWeight: 700 }}>{count}</span>
+          </div>
+        ))}
+        <div style={{ fontWeight: 700, color: '#1e293b', margin: '8px 0 6px' }}>Job Categories</div>
+        {[['Technology','1250'],['Marketing','890'],['Finance','670'],['Healthcare','540'],['Education','320']].map(([cat,count]) => (
+          <div key={cat} style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid #f1f5f9', color: '#475569' }}>
+            <span>{cat}</span><span style={{ color: '#6366f1', fontWeight: 600 }}>{count}</span>
+          </div>
+        ))}
+      </div>
+      {/* Main Content */}
+      <div style={{ background: 'white', borderRadius: '10px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', padding: '10px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+          <div style={{ background: 'white', padding: '10px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+            <div style={{ fontWeight: 700, color: '#1e293b', marginBottom: '4px' }}>📄 Resume Builder</div>
+            <div style={{ color: '#64748b', fontSize: '11px', marginBottom: '6px' }}>Resume Score: 65%</div>
+            <div style={{ display: 'flex', gap: '4px' }}>
+              <button style={{ flex: 1, background: '#6366f1', color: 'white', border: 'none', padding: '4px', borderRadius: '6px', fontSize: '10px', cursor: 'pointer' }}>Improve</button>
+              <button style={{ flex: 1, background: '#f1f5f9', border: '1px solid #e2e8f0', padding: '4px', borderRadius: '6px', fontSize: '10px', cursor: 'pointer' }}>Download</button>
+            </div>
+          </div>
+          <div style={{ background: 'white', padding: '10px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+            <div style={{ fontWeight: 700, color: '#1e293b', marginBottom: '4px' }}>🎯 Skill Assessment</div>
+            {[['JavaScript','85%','#10b981'],['React','78%','#6366f1'],['Node.js','65%','#f59e0b']].map(([s,p,c]) => (
+              <div key={s} style={{ marginBottom: '3px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px' }}><span>{s}</span><span style={{ color: c, fontWeight: 700 }}>{p}</span></div>
+                <div style={{ background: '#e2e8f0', height: '4px', borderRadius: '2px' }}><div style={{ background: c, width: p, height: '100%', borderRadius: '2px' }}></div></div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style={{ padding: '10px' }}>
+          <div style={{ fontWeight: 700, color: '#1e293b', marginBottom: '8px' }}>Found 4 jobs</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+            {[['React Developer','TechCorp Solutions','Remote','$65K-$95K','Full-time'],
+              ['Full Stack Developer','Innovation Labs','San Francisco','$75K-$115K','Hybrid'],
+              ['Frontend Engineer','Digital Solutions','New York','$70K-$110K','Remote'],
+              ['Data Analytics Specialist','DataInsights Corp','Chicago','$80K-$120K','Full-time']
+            ].map(([title,company,loc,sal,type]) => (
+              <div key={title} style={{ background: '#f8fafc', border: '1.5px solid #e2e8f0', borderRadius: '10px', padding: '10px', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg,#6366f1,#a855f7)' }}></div>
+                <div style={{ fontWeight: 700, color: '#6366f1', marginBottom: '3px' }}>{title}</div>
+                <div style={{ color: '#475569', fontSize: '11px' }}>🏢 {company}</div>
+                <div style={{ color: '#475569', fontSize: '11px' }}>📍 {loc}</div>
+                <div style={{ display: 'flex', gap: '4px', margin: '5px 0' }}>
+                  <span style={{ background: '#eef2ff', color: '#6366f1', padding: '1px 6px', borderRadius: '10px', fontSize: '10px', fontWeight: 600 }}>{type}</span>
+                </div>
+                <div style={{ color: '#059669', fontWeight: 700, fontSize: '11px', marginBottom: '6px' }}>💰 {sal}</div>
+                <div style={{ display: 'flex', gap: '4px' }}>
+                  <button style={{ flex: 1, background: '#10b981', color: 'white', border: 'none', padding: '3px', borderRadius: '5px', fontSize: '10px', cursor: 'pointer' }}>⚡ Apply</button>
+                  <button style={{ flex: 1, background: '#6366f1', color: 'white', border: 'none', padding: '3px', borderRadius: '5px', fontSize: '10px', cursor: 'pointer' }}>View</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* Right Sidebar */}
+      <div style={{ background: 'white', borderRadius: '10px', padding: '12px', border: '1px solid #e2e8f0' }}>
+        <div style={{ fontWeight: 700, color: '#1e293b', marginBottom: '8px' }}>📈 Market Stats</div>
+        {[['Jobs Today','2,847','+12%'],['Companies','1,250','+8%'],['New Users','456','+15%']].map(([l,v,t]) => (
+          <div key={l} style={{ background: '#f8fafc', padding: '6px', borderRadius: '6px', marginBottom: '5px' }}>
+            <div style={{ fontWeight: 700, color: '#1e293b' }}>{v} <span style={{ color: '#10b981', fontSize: '10px' }}>{t}</span></div>
+            <div style={{ color: '#64748b', fontSize: '10px' }}>{l}</div>
+          </div>
+        ))}
+        <div style={{ fontWeight: 700, color: '#1e293b', margin: '8px 0 6px' }}>🔥 Trending Jobs</div>
+        {[['React Developer','TechCorp','₹8-12L','Remote'],['Data Scientist','DataFlow','₹15-20L','Hybrid'],['UI/UX Designer','DesignHub','₹6-10L','Onsite']].map(([t,c,s,type]) => (
+          <div key={t} style={{ padding: '6px', borderRadius: '6px', background: '#f8fafc', marginBottom: '4px', border: '1px solid #e2e8f0' }}>
+            <div style={{ fontWeight: 600, color: '#1e293b', fontSize: '11px' }}>{t}</div>
+            <div style={{ color: '#64748b', fontSize: '10px' }}>{c} • {s}</div>
+            <span style={{ background: '#eef2ff', color: '#6366f1', padding: '1px 6px', borderRadius: '10px', fontSize: '10px' }}>{type}</span>
+          </div>
+        ))}
+        <div style={{ fontWeight: 700, color: '#1e293b', margin: '8px 0 6px' }}>🏢 Top Companies</div>
+        {[['🔍','Google','45 jobs','4.8'],['🪟','Microsoft','32 jobs','4.7'],['📦','Amazon','28 jobs','4.6'],['🍎','Apple','15 jobs','4.9']].map(([logo,name,jobs,rating]) => (
+          <div key={name} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '4px 0', borderBottom: '1px solid #f1f5f9' }}>
+            <span style={{ fontSize: '16px' }}>{logo}</span>
+            <div><div style={{ fontWeight: 600, color: '#1e293b', fontSize: '11px' }}>{name}</div><div style={{ color: '#64748b', fontSize: '10px' }}>{jobs} • ⭐ {rating}</div></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
 );
 
 const ApplicationMockup = () => (
-  <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" className="mockup-svg">
-    <rect width="900" height="520" rx="12" fill="#f1f5f9"/>
-    <rect width="900" height="40" rx="12" fill="#1e293b"/>
-    <rect y="28" width="900" height="12" fill="#1e293b"/>
-    <circle cx="20" cy="20" r="6" fill="#ef4444"/>
-    <circle cx="38" cy="20" r="6" fill="#f59e0b"/>
-    <circle cx="56" cy="20" r="6" fill="#10b981"/>
-    <rect x="80" y="10" width="640" height="20" rx="10" fill="#334155"/>
-    {/* header */}
-    <rect x="0" y="40" width="900" height="44" fill="#fff"/>
-    <rect x="16" y="50" width="80" height="24" rx="6" fill="#6366f1"/>
-    <text x="56" y="67" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">JobFinder</text>
-    {/* back btn */}
-    <rect x="20" y="100" width="100" height="28" rx="8" fill="#eef2ff" stroke="#c7d2fe" strokeWidth="1"/>
-    <text x="70" y="119" textAnchor="middle" fill="#6366f1" fontSize="11" fontWeight="600">← Back</text>
-    {/* two column layout */}
-    {/* left - job details */}
-    <rect x="20" y="140" width="340" height="360" rx="12" fill="white" stroke="#e2e8f0" strokeWidth="1"/>
-    <rect x="36" y="158" width="200" height="16" rx="4" fill="#1e293b"/>
-    <rect x="36" y="182" width="140" height="10" rx="3" fill="#6366f1"/>
-    <rect x="36" y="200" width="120" height="10" rx="3" fill="#e2e8f0"/>
-    <rect x="36" y="218" width="160" height="10" rx="3" fill="#e2e8f0"/>
-    <rect x="36" y="240" width="300" height="6" rx="3" fill="#f1f5f9"/>
-    <rect x="36" y="254" width="280" height="6" rx="3" fill="#f1f5f9"/>
-    <rect x="36" y="268" width="260" height="6" rx="3" fill="#f1f5f9"/>
-    <rect x="36" y="282" width="290" height="6" rx="3" fill="#f1f5f9"/>
-    <rect x="36" y="296" width="240" height="6" rx="3" fill="#f1f5f9"/>
-    <rect x="36" y="320" width="100" height="24" rx="12" fill="#dcfce7"/>
-    <text x="86" y="337" textAnchor="middle" fill="#16a34a" fontSize="10" fontWeight="700">$65K - $95K</text>
-    {/* right - form */}
-    <rect x="380" y="140" width="500" height="360" rx="12" fill="white" stroke="#e2e8f0" strokeWidth="1"/>
-    <text x="630" y="170" textAnchor="middle" fill="#1e293b" fontSize="14" fontWeight="700">Apply for this Position</text>
-    {/* form fields */}
-    {[['Full Name *','396',200],['Mobile Number *','620',200],['Email Address *','396',248],['Address *','396',296]].map(([label,x,y],i)=>(
-      <g key={i}>
-        <text x={Number(x)} y={Number(y)} fill="#374151" fontSize="9" fontWeight="600">{label}</text>
-        <rect x={Number(x)} y={Number(y)+6} width={label==='Email Address *'||label==='Address *'?484:220} height={label==='Address *'?50:24} rx="6" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1"/>
-      </g>
-    ))}
-    {/* file uploads */}
-    <text x="396" y="370" fill="#374151" fontSize="9" fontWeight="600">Upload CV/Resume *</text>
-    <rect x="396" y="378" width="220" height="36" rx="6" fill="#f8fafc" stroke="#c7d2fe" strokeWidth="1" strokeDasharray="4"/>
-    <text x="506" y="401" textAnchor="middle" fill="#6366f1" fontSize="9">📎 Choose file</text>
-    <text x="640" y="370" fill="#374151" fontSize="9" fontWeight="600">Passport Photo *</text>
-    <rect x="640" y="378" width="220" height="36" rx="6" fill="#f8fafc" stroke="#c7d2fe" strokeWidth="1" strokeDasharray="4"/>
-    <text x="750" y="401" textAnchor="middle" fill="#6366f1" fontSize="9">📷 Choose file</text>
-    {/* submit */}
-    <rect x="396" y="430" width="464" height="36" rx="10" fill="url(#appGrad)"/>
-    <defs>
-      <linearGradient id="appGrad" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#6366f1"/>
-        <stop offset="100%" stopColor="#8b5cf6"/>
-      </linearGradient>
-    </defs>
-    <text x="628" y="453" textAnchor="middle" fill="white" fontSize="13" fontWeight="700">Submit Application</text>
-  </svg>
+  <div style={{ background: '#f1f5f9', fontFamily: 'Inter, sans-serif', fontSize: '12px', padding: '12px' }}>
+    {/* Header */}
+    <div style={{ background: '#fff', padding: '10px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderRadius: '8px', marginBottom: '10px', border: '1px solid #e2e8f0' }}>
+      <div style={{ background: '#6366f1', color: 'white', padding: '4px 12px', borderRadius: '6px', fontWeight: 700 }}>JobFinder Pro</div>
+      <div style={{ display: 'flex', gap: '12px', color: '#475569' }}>
+        {['Jobs','Companies','Resume','Skills'].map(n => <span key={n}>{n}</span>)}
+      </div>
+    </div>
+    {/* Back Button */}
+    <button style={{ background: '#eef2ff', color: '#6366f1', border: '1px solid #c7d2fe', padding: '5px 14px', borderRadius: '8px', fontWeight: 600, marginBottom: '10px', cursor: 'pointer' }}>← Back to Jobs</button>
+    {/* Two Column Layout */}
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '12px' }}>
+      {/* Left - Job Details */}
+      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #e2e8f0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+          <div style={{ width: '44px', height: '44px', background: 'linear-gradient(135deg,#6366f1,#a855f7)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700, fontSize: '18px' }}>T</div>
+          <div>
+            <div style={{ fontWeight: 700, color: '#1e293b', fontSize: '14px' }}>React Developer</div>
+            <div style={{ color: '#6366f1', fontWeight: 600 }}>TechCorp Solutions</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
+          {[['📍 Remote','#eff6ff','#2563eb'],['💼 Full-time','#eef2ff','#6366f1'],['🎯 Mid Level','#f0fdf4','#16a34a'],['💰 $65K-$95K','#fefce8','#ca8a04']].map(([t,bg,c]) => (
+            <span key={t} style={{ background: bg, color: c, padding: '3px 10px', borderRadius: '20px', fontSize: '11px', fontWeight: 600, border: `1px solid ${c}30` }}>{t}</span>
+          ))}
+        </div>
+        <div style={{ fontWeight: 700, color: '#1e293b', marginBottom: '6px' }}>Job Description</div>
+        <div style={{ color: '#475569', fontSize: '11px', lineHeight: 1.6, marginBottom: '12px' }}>Join our team as a React developer and work on exciting projects with modern technologies. You will collaborate with cross-functional teams to deliver high-quality solutions.</div>
+        <div style={{ fontWeight: 700, color: '#1e293b', marginBottom: '6px' }}>Requirements</div>
+        {['Strong React.js knowledge','Node.js & REST APIs','MongoDB experience','Good communication skills'].map(r => (
+          <div key={r} style={{ color: '#475569', fontSize: '11px', padding: '3px 0', borderBottom: '1px solid #f1f5f9' }}>• {r}</div>
+        ))}
+        <div style={{ fontWeight: 700, color: '#1e293b', margin: '10px 0 6px' }}>Benefits</div>
+        {['💰 $65K - $95K / year','🏥 Health insurance','🏖️ Paid time off','📈 Career growth'].map(b => (
+          <div key={b} style={{ color: '#475569', fontSize: '11px', padding: '3px 0' }}>{b}</div>
+        ))}
+      </div>
+      {/* Right - Application Form */}
+      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #e2e8f0' }}>
+        <div style={{ fontWeight: 700, color: '#1e293b', fontSize: '14px', marginBottom: '14px', textAlign: 'center' }}>Apply for this Position</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '8px' }}>
+          {['Full Name *','Mobile Number *'].map(label => (
+            <div key={label}>
+              <div style={{ fontSize: '10px', fontWeight: 600, color: '#374151', marginBottom: '3px' }}>{label}</div>
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '6px', padding: '6px 10px', color: '#94a3b8', fontSize: '11px' }}>{label === 'Full Name *' ? 'Enter your name' : '+91 9876543210'}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginBottom: '8px' }}>
+          <div style={{ fontSize: '10px', fontWeight: 600, color: '#374151', marginBottom: '3px' }}>Email Address *</div>
+          <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '6px', padding: '6px 10px', color: '#94a3b8', fontSize: '11px' }}>your@email.com</div>
+        </div>
+        <div style={{ marginBottom: '8px' }}>
+          <div style={{ fontSize: '10px', fontWeight: 600, color: '#374151', marginBottom: '3px' }}>Address *</div>
+          <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '6px', padding: '6px 10px', color: '#94a3b8', fontSize: '11px', height: '48px' }}>Enter your full address...</div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '12px' }}>
+          {[['Upload CV/Resume *','📎 Choose PDF/DOC file'],['Passport Size Photo *','📷 Choose JPG/PNG file']].map(([label, placeholder]) => (
+            <div key={label}>
+              <div style={{ fontSize: '10px', fontWeight: 600, color: '#374151', marginBottom: '3px' }}>{label}</div>
+              <div style={{ background: '#f8fafc', border: '1.5px dashed #c7d2fe', borderRadius: '6px', padding: '10px', textAlign: 'center', color: '#6366f1', fontSize: '10px' }}>{placeholder}</div>
+            </div>
+          ))}
+        </div>
+        <button style={{ width: '100%', background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', color: 'white', border: 'none', padding: '10px', borderRadius: '10px', fontWeight: 700, fontSize: '13px', cursor: 'pointer' }}>Submit Application</button>
+        <div style={{ textAlign: 'center', color: '#64748b', fontSize: '10px', marginTop: '8px' }}>🔒 Your data is secure and encrypted</div>
+      </div>
+    </div>
+  </div>
 );
 
 const DashboardMockup = () => (
@@ -300,13 +371,27 @@ const ProjectShowcase = () => {
       <section className="project-stats">
         <h2>Project Statistics</h2>
         <div className="stats-grid">
-          {[['25+','React Components'],['10+','Pages & Routes'],['100%','Mobile Responsive'],['5000+','Lines of Code']].map(([val, label], i) => (
+          {[
+            ['25+','React Components'],
+            ['10+','Pages & Routes'],
+            ['100%','Mobile Responsive'],
+            ['5000+','Lines of Code'],
+            ['8+','Skill Tests'],
+            ['3','User Roles'],
+            ['6','Resume Templates'],
+            ['8','Courses Available']
+          ].map(([val, label], i) => (
             <div key={i} className="stat-item">
               <h3>{val}</h3>
               <p>{label}</p>
             </div>
           ))}
         </div>
+      </section>
+
+      {/* TEAM / FOOTER NOTE */}
+      <section className="showcase-footer-note">
+        <p>🚀 Built with React.js 18 + Node.js + MongoDB &nbsp;|&nbsp; Role-based Auth &nbsp;|&nbsp; REST API &nbsp;|&nbsp; Fully Responsive</p>
       </section>
 
     </div>
