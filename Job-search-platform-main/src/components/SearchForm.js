@@ -4,18 +4,25 @@ import './SearchForm.css';
 const SearchForm = ({ setJobs, setLoading, setError, setHasSearched }) => {
   const [keyword, setKeyword] = useState('');
   const [location, setLocation] = useState('');
+  const [searching, setSearching] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!keyword.trim()) { setError('Please enter a job keyword'); return; }
+  const runSearch = (kw, loc) => {
+    setSearching(true);
     setLoading(true);
     setError('');
     setJobs([]);
     setHasSearched(true);
     setTimeout(() => {
-      setJobs(generateJobs(keyword, location));
+      setJobs(generateJobs(kw, loc));
       setLoading(false);
-    }, 600);
+      setSearching(false);
+    }, 800);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!keyword.trim()) { setError('Please enter a job keyword'); return; }
+    runSearch(keyword, location);
   };
 
   const generateJobs = (kw, loc) => {
@@ -78,8 +85,8 @@ const SearchForm = ({ setJobs, setLoading, setError, setHasSearched }) => {
           </button>
         )}
         
-        <button type="submit" className="search-button">
-          🔍 Search Jobs
+        <button type="submit" className="search-button" disabled={searching}>
+          {searching ? '⏳ Searching...' : '🔍 Search Jobs'}
         </button>
       </form>
 
@@ -89,17 +96,7 @@ const SearchForm = ({ setJobs, setLoading, setError, setHasSearched }) => {
           <button
             key={term}
             className="popular-chip"
-            onClick={() => {
-              setKeyword(term);
-              setLoading(true);
-              setError('');
-              setJobs([]);
-              setHasSearched(true);
-              setTimeout(() => {
-              setJobs(generateJobs(term, location));
-                setLoading(false);
-              }, 600);
-            }}
+            onClick={() => { setKeyword(term); runSearch(term, location); }}
           >
             {term}
           </button>

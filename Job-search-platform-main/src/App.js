@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ApplicationPage from './pages/ApplicationPage';
 import JobDetailPage from './pages/JobDetailPage';
+import CompanyJobsPage from './pages/CompanyJobsPage';
 import Dashboard from './components/Dashboard';
 import Recommendations from './components/Recommendations';
 import TestPage from './pages/TestPage';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/recommendations" element={<Recommendations userSkills={defaultUser.skills} />} />
         <Route path="/home" element={<HomePage user={defaultUser} onLogout={handleLogout} />} />
         <Route path="/job-detail" element={<JobDetailPage />} />
+        <Route path="/company-jobs" element={<CompanyJobsPage />} />
         <Route path="/apply" element={<ApplicationPage />} />
         <Route path="/jobs" element={<HomePage user={defaultUser} onLogout={handleLogout} />} />
         <Route path="/companies" element={<CompaniesPage />} />

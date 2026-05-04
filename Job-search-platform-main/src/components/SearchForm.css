@@ -67,6 +67,12 @@
   background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
 }
 .search-button:active { transform: translateY(-1px); }
+.search-button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
 
 @media (max-width: 768px) {
   .search-form { flex-direction: column; }
