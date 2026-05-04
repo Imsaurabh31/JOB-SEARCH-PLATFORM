@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Finder - Project Screenshots</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 40px; margin-bottom: 30px; }
+        .screenshot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .screenshot-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .screenshot-image { width: 100%; height: 200px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #eee; position: relative; overflow: hidden; }
+        .screenshot-content { padding: 20px; }
+        .screenshot-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #2c3e50; }
+        .screenshot-desc { color: #666; line-height: 1.5; }
+        .mockup { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+        
+        /* Homepage Mockup */
+        .homepage-mockup {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        .homepage-header {
+            background: #2c3e50;
+            height: 15%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-size: 12px;
+        }
+        .homepage-content {
+            padding: 20px;
+            background: rgba(255,255,255,0.9);
+            margin: 20px;
+            border-radius: 8px;
+            height: 60%;
+        }
+        .job-card {
+            background: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            font-size: 10px;
+        }
+        
+        /* Job Search Mockup */
+        .jobsearch-mockup {
+            background: #f8f9fa;
+            padding: 10px;
+        }
+        .search-header {
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+            font-size: 10px;
+            margin-bottom: 10px;
+        }
+        .job-result {
+            background: white;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+            border-left: 3px solid #007bff;
+            font-size: 8px;
+        }
+        
+        /* Skill Test Mockup */
+        .skilltest-mockup {
+            background: #f8f9fa;
+            padding: 10px;
+        }
+        .test-header {
+            background: #2c3e50;
+            color: white;
+            padding: 8px;
+            font-size: 9px;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: #28a745;
+            height: 100%;
+            width: 60%;
+        }
+        .question-box {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 8px;
+        }
+        .option {
+            background: #f8f9fa;
+            margin: 3px 0;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 7px;
+        }
+        
+        /* Resume Builder Mockup */
+        .resume-mockup {
+            background: #f8f9fa;
+            display: flex;
+        }
+        .form-section {
+            flex: 1;
+            padding: 10px;
+            background: white;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .preview-section {
+            flex: 1;
+            padding: 10px;
+            background: #f8f9fa;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px dashed #ccc;
+        }
+        .form-field {
+            margin: 5px 0;
+            padding: 3px;
+            background: #f8f9fa;
+            border-radius: 2px;
+            font-size: 7px;
+        }
+        
+        /* Career Test Mockup */
+        .career-mockup {
+            background: #f8f9fa;
+            padding: 10px;
+        }
+        .career-header {
+            background: #2c3e50;
+            color: white;
+            padding: 8px;
+            font-size: 9px;
+            margin-bottom: 10px;
+        }
+        .career-result {
+            background: #e8f5e8;
+            border: 2px solid #28a745;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 8px;
+        }
+        .career-option {
+            background: white;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 7px;
+        }
+        
+        /* Mobile Mockup */
+        .mobile-mockup {
+            background: #2c3e50;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 120px;
+            height: 180px;
+        }
+        .mobile-screen {
+            background: #f8f9fa;
+            border-radius: 15px;
+            height: 100%;
+            padding: 5px;
+        }
+        .mobile-header {
+            background: #667eea;
+            color: white;
+            padding: 5px;
+            font-size: 8px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .mobile-job {
+            background: white;
+            margin: 3px 0;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 6px;
+        }
+        
+        @media (max-width: 768px) {
+            .screenshot-grid { grid-template-columns: 1fr; }
+            .container { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Job Finder - Project Output Screenshots</h1>
+            <p>Visual demonstration of all application features and interfaces</p>
+        </div>
+        
+        <div class="screenshot-grid">
+            <!-- Homepage Interface -->
+            <div class="screenshot-card">
+                <div class="screenshot-image">
+                    <div class="mockup homepage-mockup">
+                        <div class="homepage-header">
+                            <strong>JobFinder</strong> &nbsp; Jobs | Companies | Services | Resume
+                        </div>
+                        <div class="homepage-content">
+                            <div style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">Find Your Dream Job</div>
+                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <div style="flex: 1; height: 25px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 3px;"></div>
+                                <div style="width: 60px; height: 25px; background: #007bff; border-radius: 3px;"></div>
+                            </div>
+                            <div class="job-card">
+                                <strong>Software Developer</strong><br>
+                                TechCorp Solutions • ₹8-12 LPA<br>
+                                React, JavaScript, Node.js
+                            </div>
+                            <div class="job-card">
+                                <strong>Frontend Engineer</strong><br>
+                                StartupXYZ • ₹6-10 LPA<br>
+                                HTML, CSS, React
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-content">
+                    <div class="screenshot-title">Homepage Interface</div>
+                    <div class="screenshot-desc">Main landing page with header navigation, job search form, and job listings in a three-column responsive layout.</div>
+                </div>
+            </div>
+            
+            <!-- Job Search Results -->
+            <div class="screenshot-card">
+                <div class="screenshot-image">
+                    <div class="mockup jobsearch-mockup">
+                        <div class="search-header">
+                            JobFinder - Search Results for "React Developer"
+                        </div>
+                        <div style="font-size: 10px; margin: 10px 0;">Found 25 jobs matching your criteria</div>
+                        <div class="job-result">
+                            <strong>Senior React Developer</strong><br>
+                            TechCorp Solutions • ₹12-18 LPA • Bangalore
+                        </div>
+                        <div class="job-result">
+                            <strong>Frontend React Engineer</strong><br>
+                            StartupXYZ • ₹8-14 LPA • Mumbai
+                        </div>
+                        <div class="job-result">
+                            <strong>Full Stack Developer</strong><br>
+                            InnovateTech • ₹10-16 LPA • Delhi
+                        </div>
+                        <div class="job-result">
+                            <strong>React.js Developer</strong><br>
+                            WebSolutions • ₹6-12 LPA • Pune
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-content">
+                    <div class="screenshot-title">Job Search Results</div>
+                    <div class="screenshot-desc">Real-time job filtering showing search results for "React Developer" with company details, salary ranges, and locations.</div>
+                </div>
+            </div>
+            
+            <!-- Skill Assessment Test -->
+            <div class="screenshot-card">
+                <div class="screenshot-image">
+                    <div class="mockup skilltest-mockup">
+                        <div class="test-header">
+                            JobFinder - JavaScript Skill Assessment
+                        </div>
+                        <div style="font-size: 8px; margin: 5px 0;">Question 5 of 10 - 50% Complete</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="question-box">
+                            <strong>What is the output of the following code?</strong><br>
+                            <div style="background: #f1f1f1; padding: 5px; margin: 5px 0; font-family: monospace;">
+                                const arr = [1, 2, 3];<br>
+                                console.log(arr.map(x => x * 2));
+                            </div>
+                        </div>
+                        <div class="option">A) [1, 2, 3]</div>
+                        <div class="option" style="background: #e7f3ff; border-left: 3px solid #007bff;">B) [2, 4, 6]</div>
+                        <div class="option">C) [1, 4, 9]</div>
+                        <div class="option">D) undefined</div>
+                    </div>
+                </div>
+                <div class="screenshot-content">
+                    <div class="screenshot-title">Skill Assessment Test</div>
+                    <div class="screenshot-desc">Interactive skill testing interface with multiple choice questions, progress tracking, and instant scoring for technical skills.</div>
+                </div>
+            </div>
+            
+            <!-- Resume Builder -->
+            <div class="screenshot-card">
+                <div class="screenshot-image">
+                    <div class="mockup resume-mockup">
+                        <div class="form-section">
+                            <div style="font-size: 9px; font-weight: bold; margin-bottom: 8px;">Build Your Resume</div>
+                            <div class="form-field">Full Name</div>
+                            <div class="form-field">Email Address</div>
+                            <div class="form-field">Phone Number</div>
+                            <div class="form-field">Skills</div>
+                            <div class="form-field">Experience</div>
+                            <div class="form-field">Education</div>
+                        </div>
+                        <div class="preview-section">
+                            <div style="font-size: 9px; font-weight: bold; margin-bottom: 8px;">Live Preview</div>
+                            <div style="font-size: 8px; font-weight: bold;">JOHN DOE</div>
+                            <div style="font-size: 6px;">Software Developer</div>
+                            <div style="font-size: 6px;">john.doe@email.com</div>
+                            <div style="font-size: 7px; margin-top: 8px; font-weight: bold;">SKILLS</div>
+                            <div style="font-size: 6px;">• React.js, JavaScript</div>
+                            <div style="font-size: 6px;">• HTML, CSS, Node.js</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-content">
+                    <div class="screenshot-title">Resume Builder</div>
+                    <div class="screenshot-desc">Professional resume builder with form input fields and live preview functionality showing multiple template options.</div>
+                </div>
+            </div>
+            
+            <!-- Career Test System -->
+            <div class="screenshot-card">
+                <div class="screenshot-image">
+                    <div class="mockup career-mockup">
+                        <div class="career-header">
+                            JobFinder - Career Guidance Results
+                        </div>
+                        <div class="career-result">
+                            <strong>🎯 Recommended: Software Developer</strong><br>
+                            Based on your interests in technology<br>
+                            Salary: ₹6-15 LPA | Growth: 22% annually
+                        </div>
+                        <div style="font-size: 8px; font-weight: bold; margin: 8px 0;">Other Career Matches</div>
+                        <div class="career-option">
+                            <strong>Data Analyst</strong> - Match: 85% - ₹4-10 LPA
+                        </div>
+                        <div class="career-option">
+                            <strong>UI/UX Designer</strong> - Match: 78% - ₹5-12 LPA
+                        </div>
+                        <div class="career-option">
+                            <strong>Product Manager</strong> - Match: 72% - ₹8-20 LPA
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-content">
+                    <div class="screenshot-title">Career Test System</div>
+                    <div class="screenshot-desc">Personalized career guidance system showing recommended career paths based on user interests and skills assessment.</div>
+                </div>
+            </div>
+            
+            <!-- Mobile Responsive -->
+            <div class="screenshot-card">
+                <div class="screenshot-image">
+                    <div class="mobile-mockup">
+                        <div class="mobile-screen">
+                            <div class="mobile-header">
+                                JobFinder
+                            </div>
+                            <div style="background: white; padding: 3px; margin: 3px 0; border-radius: 2px; font-size: 6px;">
+                                Search Jobs
+                            </div>
+                            <div class="mobile-job">
+                                <strong>Software Dev</strong><br>
+                                TechCorp • ₹8-12L
+                            </div>
+                            <div class="mobile-job">
+                                <strong>Frontend Eng</strong><br>
+                                StartupXYZ • ₹6-10L
+                            </div>
+                            <div class="mobile-job">
+                                <strong>Full Stack</strong><br>
+                                InnovateTech • ₹10-16L
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="screenshot-content">
+                    <div class="screenshot-title">Mobile Responsive Design</div>
+                    <div class="screenshot-desc">Mobile-optimized interface showing single-column layout with touch-friendly elements and responsive design.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px; padding: 30px; background: white; border-radius: 10px;">
+            <h3>Project Statistics</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div style="padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px;">
+                    <h2>25+</h2>
+                    <p>React Components</p>
+                </div>
+                <div style="padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px;">
+                    <h2>15+</h2>
+                    <p>Feature Pages</p>
+                </div>
+                <div style="padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px;">
+                    <h2>100%</h2>
+                    <p>Mobile Responsive</p>
+                </div>
+                <div style="padding: 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px;">
+                    <h2>5000+</h2>
+                    <p>Lines of Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

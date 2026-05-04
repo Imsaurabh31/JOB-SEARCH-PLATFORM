@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: jobfinder
+    env: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npx serve -s build -p $PORT
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: CI
+        value: false

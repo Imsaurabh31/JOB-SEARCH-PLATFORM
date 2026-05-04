@@ -1,0 +1,123 @@
+/* ===== RIGHT SIDEBAR ===== */
+.right-sidebar-content { height: 100%; }
+
+.sidebar-section h4 { color: #1e293b; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem; }
+
+/* STATS */
+.job-stats { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.stat-item {
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  padding: 0.85rem;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.stat-item:hover {
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(99,102,241,0.12);
+  border-color: #c7d2fe;
+}
+.stat-value { font-size: 1.4rem; font-weight: 800; color: #6366f1; margin-bottom: 0.15rem; }
+.stat-label { font-size: 0.75rem; color: #64748b; margin-bottom: 0.25rem; }
+.stat-trend { font-size: 0.7rem; color: #10b981; font-weight: 700; }
+
+/* TRENDING JOBS */
+.trending-jobs { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.trending-job {
+  background: #f8fafc;
+  padding: 0.85rem;
+  border-radius: 10px;
+  border-left: 3px solid #6366f1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #6366f1;
+}
+.trending-job:hover {
+  background: #eef2ff;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.1);
+}
+.job-info h5 { color: #1e293b; font-size: 0.85rem; margin-bottom: 0.2rem; font-weight: 600; }
+.job-info p { color: #64748b; font-size: 0.78rem; margin-bottom: 0.4rem; }
+.job-details { display: flex; justify-content: space-between; align-items: center; }
+.salary { font-size: 0.78rem; color: #059669; font-weight: 700; }
+
+.job-type {
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+.job-type.remote { background: #dbeafe; color: #1d4ed8; }
+.job-type.hybrid { background: #fef3c7; color: #d97706; }
+.job-type.onsite { background: #dcfce7; color: #16a34a; }
+
+/* TOP COMPANIES */
+.top-companies { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.company-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
+}
+.company-item:hover {
+  background: #eef2ff;
+  transform: scale(1.02);
+  border-color: #c7d2fe;
+  box-shadow: 0 4px 12px rgba(99,102,241,0.1);
+}
+.company-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+.company-info h5 { color: #1e293b; font-size: 0.85rem; margin-bottom: 0.15rem; font-weight: 600; }
+.company-info p { color: #64748b; font-size: 0.75rem; }
+
+/* CAREER TIP */
+.career-tip {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 1.25rem;
+  border-radius: 12px;
+  text-align: center;
+}
+.career-tip h4 { color: white; margin-bottom: 0.6rem; font-size: 0.95rem; }
+.career-tip p { font-size: 0.82rem; line-height: 1.5; margin-bottom: 0.9rem; opacity: 0.9; }
+
+.tip-action {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tip-action:hover {
+  background: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}

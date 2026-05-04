@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Placeholder Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .placeholder { margin: 20px 0; border: 2px dashed #ccc; padding: 20px; text-align: center; }
+        .download-btn { background: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Job Finder - Image Placeholders</h1>
+    
+    <div class="placeholder" id="homepage">
+        <h3>Homepage Screenshot (1200x800)</h3>
+        <canvas id="homepage-canvas" width="1200" height="800"></canvas>
+        <br><button class="download-btn" onclick="downloadImage('homepage-canvas', 'homepage-desktop.png')">Download</button>
+    </div>
+
+    <div class="placeholder" id="job-search">
+        <h3>Job Search Results (1200x800)</h3>
+        <canvas id="search-canvas" width="1200" height="800"></canvas>
+        <br><button class="download-btn" onclick="downloadImage('search-canvas', 'job-search-results.png')">Download</button>
+    </div>
+
+    <div class="placeholder" id="skill-test">
+        <h3>Skill Test Interface (1200x800)</h3>
+        <canvas id="skill-canvas" width="1200" height="800"></canvas>
+        <br><button class="download-btn" onclick="downloadImage('skill-canvas', 'skill-test-interface.png')">Download</button>
+    </div>
+
+    <div class="placeholder" id="resume-builder">
+        <h3>Resume Builder (1200x800)</h3>
+        <canvas id="resume-canvas" width="1200" height="800"></canvas>
+        <br><button class="download-btn" onclick="downloadImage('resume-canvas', 'resume-builder.png')">Download</button>
+    </div>
+
+    <script>
+        function createPlaceholder(canvasId, title, description) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 1200, 800);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1200, 800);
+            
+            // Header bar
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillRect(0, 0, 1200, 80);
+            
+            // Logo area
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(20, 15, 150, 50);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('Job Finder', 30, 45);
+            
+            // Navigation
+            ctx.fillStyle = 'white';
+            ctx.font = '16px Arial';
+            ctx.fillText('Home', 200, 45);
+            ctx.fillText('Jobs', 260, 45);
+            ctx.fillText('Skills', 320, 45);
+            ctx.fillText('Resume', 380, 45);
+            
+            // Main content area
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fillRect(50, 120, 1100, 600);
+            
+            // Title
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 32px Arial';
+            ctx.fillText(title, 100, 180);
+            
+            // Description
+            ctx.font = '18px Arial';
+            ctx.fillStyle = '#7f8c8d';
+            ctx.fillText(description, 100, 220);
+            
+            // Sample content boxes
+            for (let i = 0; i < 3; i++) {
+                ctx.fillStyle = '#ecf0f1';
+                ctx.fillRect(100 + (i * 320), 280, 280, 200);
+                ctx.strokeStyle = '#bdc3c7';
+                ctx.strokeRect(100 + (i * 320), 280, 280, 200);
+                
+                ctx.fillStyle = '#34495e';
+                ctx.font = '16px Arial';
+                ctx.fillText(`Feature ${i + 1}`, 120 + (i * 320), 310);
+            }
+        }
+
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Generate all placeholders
+        window.onload = function() {
+            createPlaceholder('homepage-canvas', 'Job Finder Homepage', 'Modern job search interface with advanced filtering');
+            createPlaceholder('search-canvas', 'Job Search Results', 'Real-time job filtering and search results');
+            createPlaceholder('skill-canvas', 'Skill Assessment Test', 'Comprehensive technical and soft skill testing');
+            createPlaceholder('resume-canvas', 'Resume Builder', 'Professional resume templates with live preview');
+        };
+    </script>
+</body>
+</html>

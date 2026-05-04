@@ -1,0 +1,110 @@
+/* ===== SEARCH FORM ===== */
+.search-form {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.form-group { flex: 1; min-width: 200px; }
+
+.search-input {
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: rgba(255,255,255,0.95);
+  color: #1e293b;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.search-input::placeholder { color: #94a3b8; }
+.search-input:focus {
+  border-color: white;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.3);
+  transform: translateY(-1px);
+}
+
+.clear-button {
+  padding: 0.9rem 1.25rem;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.clear-button:hover {
+  background: rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+}
+
+.search-button {
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 130px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.search-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(239,68,68,0.4);
+  background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+}
+.search-button:active { transform: translateY(-1px); }
+
+@media (max-width: 768px) {
+  .search-form { flex-direction: column; }
+  .form-group { min-width: 100%; }
+  .search-button { width: 100%; }
+  .clear-button { width: 100%; }
+}
+
+/* Popular search chips */
+.popular-searches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.popular-label {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.popular-chip {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.popular-chip:hover {
+  background: rgba(255,255,255,0.3);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}

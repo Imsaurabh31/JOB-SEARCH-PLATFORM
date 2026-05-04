@@ -1,0 +1,60 @@
+/* ===== JOB ALERTS ===== */
+.job-alerts {
+  background: white;
+  padding: 1.25rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.08);
+  border: 1px solid #e2e8f0;
+}
+.job-alerts h3 { margin: 0 0 0.9rem; color: #1e293b; font-size: 0.95rem; font-weight: 700; }
+
+.alert-form { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.9rem; }
+.alert-form input {
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+  color: #1e293b;
+}
+.alert-form input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
+.alert-form button {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+.alert-form button:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(99,102,241,0.3); }
+
+.alerts-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.alert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0.85rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.82rem;
+  color: #374151;
+}
+
+.alert-item button {
+  border: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.alert-item button.active { background: #dcfce7; color: #16a34a; }
+.alert-item button.active:hover { background: #bbf7d0; }
+.alert-item button.inactive { background: #f1f5f9; color: #64748b; }
+.alert-item button.inactive:hover { background: #e2e8f0; }

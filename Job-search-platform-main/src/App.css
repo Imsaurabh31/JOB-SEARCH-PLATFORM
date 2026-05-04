@@ -1,0 +1,167 @@
+/* ===== GLOBAL RESET & VARIABLES ===== */
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #f59e0b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 24px rgba(99,102,241,0.10);
+  --shadow-lg: 0 8px 40px rgba(99,102,241,0.18);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* ===== APP WRAPPER ===== */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ===== PAGE LAYOUT ===== */
+.page-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 270px 1fr 270px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ===== SIDEBARS ===== */
+.left-sidebar,
+.right-sidebar {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  border: 1px solid var(--border);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+}
+
+.sidebar-section {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+/* ===== SEARCH SECTION ===== */
+.search-section {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.search-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.content-area { flex: 1; display: flex; flex-direction: column; }
+
+.naukri-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.25rem;
+}
+
+.no-jobs-content { padding: 1.25rem; flex: 1; }
+
+/* ===== ERROR ===== */
+.error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-sm);
+  margin: 1.25rem;
+  font-weight: 500;
+}
+
+/* ===== FLOATING BUTTONS ===== */
+.floating-actions {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 1000;
+}
+
+.chat-float-btn,
+.call-float-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-float-btn { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; }
+.call-float-btn { background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; }
+.chat-float-btn:hover,
+.call-float-btn:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+  .page-container { grid-template-columns: 1fr; }
+  .left-sidebar, .right-sidebar { position: static; max-height: none; }
+}
+@media (max-width: 768px) {
+  .App { margin: 0; }
+  .page-container { padding: 0.75rem; }
+  .search-section { padding: 1.5rem 1rem; }
+  .naukri-features { grid-template-columns: 1fr; margin: 0.75rem; }
+  .floating-actions { bottom: 1rem; right: 1rem; }
+  .chat-float-btn, .call-float-btn { width: 48px; height: 48px; font-size: 1.2rem; }
+}

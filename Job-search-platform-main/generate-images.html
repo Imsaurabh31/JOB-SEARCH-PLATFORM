@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Project Screenshots</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; margin-bottom: 30px; border-radius: 10px; }
+        .image-section { background: white; margin: 20px 0; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .image-title { font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; color: #2c3e50; }
+        canvas { border: 2px solid #ddd; border-radius: 8px; margin: 10px 0; display: block; }
+        .download-btn { background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 10px 5px; }
+        .download-btn:hover { background: #218838; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📸 Job Finder - Screenshot Generator</h1>
+            <p>Generate real project screenshots for your report</p>
+        </div>
+
+        <div class="image-section">
+            <div class="image-title">1. Homepage Interface</div>
+            <canvas id="homepage" width="1200" height="800"></canvas>
+            <button class="download-btn" onclick="downloadImage('homepage', 'homepage-interface.png')">Download Homepage</button>
+        </div>
+
+        <div class="image-section">
+            <div class="image-title">2. Job Search Results</div>
+            <canvas id="jobsearch" width="1200" height="800"></canvas>
+            <button class="download-btn" onclick="downloadImage('jobsearch', 'job-search-results.png')">Download Job Search</button>
+        </div>
+
+        <div class="image-section">
+            <div class="image-title">3. Skill Assessment Test</div>
+            <canvas id="skilltest" width="1200" height="800"></canvas>
+            <button class="download-btn" onclick="downloadImage('skilltest', 'skill-assessment-test.png')">Download Skill Test</button>
+        </div>
+
+        <div class="image-section">
+            <div class="image-title">4. Resume Builder</div>
+            <canvas id="resume" width="1200" height="800"></canvas>
+            <button class="download-btn" onclick="downloadImage('resume', 'resume-builder.png')">Download Resume Builder</button>
+        </div>
+
+        <div class="image-section">
+            <div class="image-title">5. Career Test System</div>
+            <canvas id="career" width="1200" height="800"></canvas>
+            <button class="download-btn" onclick="downloadImage('career', 'career-test-system.png')">Download Career Test</button>
+        </div>
+
+        <div class="image-section">
+            <div class="image-title">6. Mobile Responsive</div>
+            <canvas id="mobile" width="400" height="800"></canvas>
+            <button class="download-btn" onclick="downloadImage('mobile', 'mobile-responsive.png')">Download Mobile View</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background: white; border-radius: 10px;">
+            <h3>📋 Instructions</h3>
+            <p>1. Click download buttons to save images</p>
+            <p>2. Save all images in your <code>screenshots</code> folder</p>
+            <p>3. Images will appear in your PROJECT_REPORT.md file</p>
+        </div>
+    </div>
+
+    <script>
+        function createHomepage() {
+            const canvas = document.getElementById('homepage');
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 1200, 800);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1200, 800);
+            
+            // Header
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillRect(0, 0, 1200, 80);
+            
+            // Logo
+            ctx.fillStyle = '#3498db';
+            ctx.fillRect(20, 15, 150, 50);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('JobFinder', 30, 45);
+            
+            // Navigation
+            ctx.fillStyle = 'white';
+            ctx.font = '16px Arial';
+            const navItems = ['Jobs', 'Companies', 'Services', 'Resume', 'Skills', 'Salary'];
+            navItems.forEach((item, i) => {
+                ctx.fillText(item, 200 + (i * 100), 45);
+            });
+            
+            // Search Section
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+            ctx.fillRect(50, 120, 1100, 120);
+            ctx.strokeStyle = '#e9ecef';
+            ctx.strokeRect(50, 120, 1100, 120);
+            
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 28px Arial';
+            ctx.fillText('Find Your Dream Job', 80, 160);
+            ctx.font = '18px Arial';
+            ctx.fillText('Search by keyword, location, or company', 80, 190);
+            
+            // Search boxes
+            ctx.fillStyle = 'white';
+            ctx.fillRect(80, 200, 350, 40);
+            ctx.strokeStyle = '#ddd';
+            ctx.strokeRect(80, 200, 350, 40);
+            ctx.fillRect(450, 200, 250, 40);
+            ctx.strokeRect(450, 200, 250, 40);
+            
+            ctx.fillStyle = '#007bff';
+            ctx.fillRect(720, 200, 120, 40);
+            ctx.fillStyle = 'white';
+            ctx.font = '16px Arial';
+            ctx.fillText('Search Jobs', 740, 225);
+            
+            // Job Cards
+            const jobs = [
+                { title: 'React Developer', company: 'TechCorp Solutions', salary: '₹8-12 LPA', skills: 'React, JavaScript, Node.js' },
+                { title: 'Full Stack Developer', company: 'Innovation Labs', salary: '₹10-16 LPA', skills: 'MERN Stack, AWS' },
+                { title: 'Frontend Engineer', company: 'Digital Solutions', salary: '₹6-10 LPA', skills: 'HTML, CSS, React' }
+            ];
+            
+            jobs.forEach((job, i) => {
+                const x = 80 + (i * 360);
+                const y = 280;
+                
+                ctx.fillStyle = 'white';
+                ctx.fillRect(x, y, 340, 200);
+                ctx.strokeStyle = '#e9ecef';
+                ctx.strokeRect(x, y, 340, 200);
+                
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = 'bold 18px Arial';
+                ctx.fillText(job.title, x + 20, y + 35);
+                ctx.font = '14px Arial';
+                ctx.fillText(job.company, x + 20, y + 60);
+                ctx.fillStyle = '#28a745';
+                ctx.font = 'bold 16px Arial';
+                ctx.fillText(job.salary, x + 20, y + 85);
+                ctx.fillStyle = '#666';
+                ctx.font = '12px Arial';
+                ctx.fillText(job.skills, x + 20, y + 110);
+                
+                // Apply button
+                ctx.fillStyle = '#007bff';
+                ctx.fillRect(x + 20, y + 140, 100, 35);
+                ctx.fillStyle = 'white';
+                ctx.font = '14px Arial';
+                ctx.fillText('Quick Apply', x + 35, y + 162);
+                
+                // Chat button
+                ctx.fillStyle = '#28a745';
+                ctx.fillRect(x + 140, y + 140, 80, 35);
+                ctx.fillStyle = 'white';
+                ctx.fillText('Chat', x + 165, y + 162);
+            });
+            
+            // Sidebar indicators
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fillRect(50, 500, 200, 250);
+            ctx.strokeStyle = '#e9ecef';
+            ctx.strokeRect(50, 500, 200, 250);
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('User Profile', 70, 530);
+            
+            ctx.fillRect(950, 500, 200, 250);
+            ctx.strokeRect(950, 500, 200, 250);
+            ctx.fillText('Course Ads', 970, 530);
+        }
+
+        function createJobSearch() {
+            const canvas = document.getElementById('jobsearch');
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, 1200, 800);
+            
+            // Header
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillRect(0, 0, 1200, 80);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('JobFinder', 30, 45);
+            
+            // Search Results Header
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 28px Arial';
+            ctx.fillText('Search Results for "React Developer"', 50, 130);
+            ctx.font = '18px Arial';
+            ctx.fillText('Found 25 jobs matching your criteria', 50, 160);
+            
+            // Job Results
+            const jobs = [
+                { title: 'Senior React Developer', company: 'TechCorp Solutions', salary: '₹12-18 LPA', location: 'Bangalore', posted: '2 days ago' },
+                { title: 'Frontend React Engineer', company: 'StartupXYZ', salary: '₹8-14 LPA', location: 'Mumbai', posted: '1 day ago' },
+                { title: 'Full Stack Developer (React)', company: 'InnovateTech', salary: '₹10-16 LPA', location: 'Delhi', posted: '3 days ago' },
+                { title: 'React.js Developer', company: 'WebSolutions Inc', salary: '₹6-12 LPA', location: 'Pune', posted: '1 week ago' },
+                { title: 'Lead React Developer', company: 'Digital Dynamics', salary: '₹15-25 LPA', location: 'Hyderabad', posted: '4 days ago' }
+            ];
+            
+            jobs.forEach((job, i) => {
+                const y = 200 + (i * 110);
+                
+                ctx.fillStyle = 'white';
+                ctx.fillRect(50, y, 1100, 100);
+                ctx.strokeStyle = '#e9ecef';
+                ctx.strokeRect(50, y, 1100, 100);
+                
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = 'bold 20px Arial';
+                ctx.fillText(job.title, 80, y + 30);
+                ctx.font = '16px Arial';
+                ctx.fillText(job.company, 80, y + 55);
+                ctx.fillStyle = '#28a745';
+                ctx.font = 'bold 16px Arial';
+                ctx.fillText(job.salary, 80, y + 80);
+                
+                ctx.fillStyle = '#666';
+                ctx.font = '14px Arial';
+                ctx.fillText(job.location, 400, y + 55);
+                ctx.fillText(job.posted, 400, y + 80);
+                
+                // Apply button
+                ctx.fillStyle = '#007bff';
+                ctx.fillRect(950, y + 20, 120, 35);
+                ctx.fillStyle = 'white';
+                ctx.font = '14px Arial';
+                ctx.fillText('Apply Now', 980, y + 42);
+                
+                // Save button
+                ctx.fillStyle = '#6c757d';
+                ctx.fillRect(950, y + 65, 120, 25);
+                ctx.fillStyle = 'white';
+                ctx.font = '12px Arial';
+                ctx.fillText('Save Job', 985, y + 80);
+            });
+        }
+
+        function createSkillTest() {
+            const canvas = document.getElementById('skilltest');
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, 1200, 800);
+            
+            // Header
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillRect(0, 0, 1200, 80);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('JobFinder - Skill Assessment', 30, 45);
+            
+            // Test Interface
+            ctx.fillStyle = 'white';
+            ctx.fillRect(100, 120, 1000, 600);
+            ctx.strokeStyle = '#e9ecef';
+            ctx.strokeRect(100, 120, 1000, 600);
+            
+            // Progress bar
+            ctx.fillStyle = '#e9ecef';
+            ctx.fillRect(150, 160, 900, 25);
+            ctx.fillStyle = '#28a745';
+            ctx.fillRect(150, 160, 450, 25);
+            
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = '16px Arial';
+            ctx.fillText('Question 5 of 10 - 50% Complete', 150, 210);
+            ctx.font = '14px Arial';
+            ctx.fillText('Time Remaining: 8:45', 850, 210);
+            
+            // Question
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('JavaScript Skill Assessment', 150, 250);
+            ctx.font = '18px Arial';
+            ctx.fillText('What is the output of the following code?', 150, 290);
+            
+            // Code block
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(150, 310, 900, 120);
+            ctx.strokeStyle = '#ddd';
+            ctx.strokeRect(150, 310, 900, 120);
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = '16px Courier New';
+            ctx.fillText('const arr = [1, 2, 3];', 170, 340);
+            ctx.fillText('const result = arr.map(x => x * 2);', 170, 370);
+            ctx.fillText('console.log(result);', 170, 400);
+            
+            // Options
+            const options = [
+                'A) [1, 2, 3]',
+                'B) [2, 4, 6]',
+                'C) [1, 4, 9]',
+                'D) undefined'
+            ];
+            
+            options.forEach((option, i) => {
+                const y = 470 + (i * 50);
+                ctx.fillStyle = i === 1 ? '#e7f3ff' : 'white';
+                ctx.fillRect(150, y, 900, 40);
+                ctx.strokeStyle = i === 1 ? '#007bff' : '#ddd';
+                ctx.lineWidth = i === 1 ? 3 : 1;
+                ctx.strokeRect(150, y, 900, 40);
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = '16px Arial';
+                ctx.fillText(option, 180, y + 25);
+            });
+            
+            // Next button
+            ctx.fillStyle = '#007bff';
+            ctx.fillRect(950, 670, 100, 40);
+            ctx.fillStyle = 'white';
+            ctx.font = '16px Arial';
+            ctx.fillText('Next', 980, 695);
+        }
+
+        function createResume() {
+            const canvas = document.getElementById('resume');
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, 1200, 800);
+            
+            // Header
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillRect(0, 0, 1200, 80);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('JobFinder - Resume Builder', 30, 45);
+            
+            // Form Section
+            ctx.fillStyle = 'white';
+            ctx.fillRect(50, 120, 550, 600);
+            ctx.strokeStyle = '#e9ecef';
+            ctx.strokeRect(50, 120, 550, 600);
+            
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('Build Your Resume', 80, 160);
+            
+            // Form fields
+            const fields = [
+                { label: 'Full Name', value: 'John Doe' },
+                { label: 'Email', value: 'john.doe@email.com' },
+                { label: 'Phone', value: '+91-9876543210' },
+                { label: 'Skills', value: 'React.js, JavaScript, HTML, CSS' },
+                { label: 'Experience', value: '2 years at TechCorp' }
+            ];
+            
+            fields.forEach((field, i) => {
+                const y = 200 + (i * 80);
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = '16px Arial';
+                ctx.fillText(field.label, 80, y);
+                
+                ctx.fillStyle = 'white';
+                ctx.fillRect(80, y + 10, 480, 40);
+                ctx.strokeStyle = '#ddd';
+                ctx.strokeRect(80, y + 10, 480, 40);
+                
+                ctx.fillStyle = '#666';
+                ctx.font = '14px Arial';
+                ctx.fillText(field.value, 90, y + 35);
+            });
+            
+            // Template buttons
+            ctx.fillStyle = '#007bff';
+            ctx.fillRect(80, 620, 100, 35);
+            ctx.fillStyle = 'white';
+            ctx.font = '14px Arial';
+            ctx.fillText('Professional', 90, 642);
+            
+            ctx.fillStyle = '#28a745';
+            ctx.fillRect(200, 620, 80, 35);
+            ctx.fillStyle = 'white';
+            ctx.fillText('Modern', 220, 642);
+            
+            // Preview Section
+            ctx.fillStyle = 'white';
+            ctx.fillRect(650, 120, 500, 600);
+            ctx.strokeStyle = '#e9ecef';
+            ctx.strokeRect(650, 120, 500, 600);
+            
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('Live Preview', 680, 160);
+            
+            // Resume preview
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(680, 180, 440, 500);
+            ctx.strokeStyle = '#ddd';
+            ctx.strokeRect(680, 180, 440, 500);
+            
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('JOHN DOE', 700, 220);
+            ctx.font = '16px Arial';
+            ctx.fillText('Software Developer', 700, 245);
+            ctx.font = '14px Arial';
+            ctx.fillText('john.doe@email.com | +91-9876543210', 700, 270);
+            
+            ctx.font = 'bold 18px Arial';
+            ctx.fillText('SKILLS', 700, 320);
+            ctx.font = '14px Arial';
+            ctx.fillText('• React.js, JavaScript, HTML, CSS', 700, 345);
+            ctx.fillText('• Node.js, Express, MongoDB', 700, 365);
+            ctx.fillText('• Git, AWS, Docker', 700, 385);
+            
+            ctx.font = 'bold 18px Arial';
+            ctx.fillText('EXPERIENCE', 700, 430);
+            ctx.font = '14px Arial';
+            ctx.fillText('Software Developer - TechCorp (2022-Present)', 700, 455);
+            ctx.fillText('• Developed React applications', 700, 475);
+            ctx.fillText('• Collaborated with cross-functional teams', 700, 495);
+            
+            // Download button
+            ctx.fillStyle = '#28a745';
+            ctx.fillRect(680, 690, 150, 40);
+            ctx.fillStyle = 'white';
+            ctx.font = '16px Arial';
+            ctx.fillText('Download PDF', 710, 715);
+        }
+
+        function createCareer() {
+            const canvas = document.getElementById('career');
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(0, 0, 1200, 800);
+            
+            // Header
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillRect(0, 0, 1200, 80);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('JobFinder - Career Guidance', 30, 45);
+            
+            // Career Test Results
+            ctx.fillStyle = 'white';
+            ctx.fillRect(100, 120, 1000, 600);
+            ctx.strokeStyle = '#e9ecef';
+            ctx.strokeRect(100, 120, 1000, 600);
+            
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 28px Arial';
+            ctx.fillText('Your Career Path Results', 150, 170);
+            
+            // Recommended Career
+            ctx.fillStyle = '#e8f5e8';
+            ctx.fillRect(150, 200, 900, 150);
+            ctx.strokeStyle = '#28a745';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(150, 200, 900, 150);
+            
+            ctx.fillStyle = '#28a745';
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('🎯 Recommended: Software Developer', 180, 240);
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = '16px Arial';
+            ctx.fillText('Based on your interests in technology and problem-solving', 180, 270);
+            ctx.fillText('Average Salary: ₹6-15 LPA | Growth Rate: 22% annually', 180, 295);
+            ctx.fillText('Required Skills: Programming, Logic, Communication', 180, 320);
+            
+            // Other Suggestions
+            const careers = [
+                { title: 'Data Analyst', match: '85%', salary: '₹4-10 LPA', description: 'Analyze data to drive business decisions' },
+                { title: 'UI/UX Designer', match: '78%', salary: '₹5-12 LPA', description: 'Design user-friendly interfaces' },
+                { title: 'Product Manager', match: '72%', salary: '₹8-20 LPA', description: 'Lead product development teams' }
+            ];
+            
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('Other Career Matches', 150, 400);
+            
+            careers.forEach((career, i) => {
+                const y = 430 + (i * 80);
+                ctx.fillStyle = 'white';
+                ctx.fillRect(150, y, 900, 70);
+                ctx.strokeStyle = '#e9ecef';
+                ctx.strokeRect(150, y, 900, 70);
+                
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = 'bold 18px Arial';
+                ctx.fillText(career.title, 180, y + 25);
+                ctx.font = '14px Arial';
+                ctx.fillText(career.description, 180, y + 45);
+                
+                ctx.fillStyle = '#007bff';
+                ctx.font = 'bold 16px Arial';
+                ctx.fillText(`Match: ${career.match}`, 600, y + 25);
+                ctx.fillStyle = '#28a745';
+                ctx.fillText(career.salary, 600, y + 45);
+                
+                // View Details button
+                ctx.fillStyle = '#007bff';
+                ctx.fillRect(800, y + 15, 120, 30);
+                ctx.fillStyle = 'white';
+                ctx.font = '12px Arial';
+                ctx.fillText('View Details', 830, y + 35);
+            });
+        }
+
+        function createMobile() {
+            const canvas = document.getElementById('mobile');
+            const ctx = canvas.getContext('2d');
+            
+            // Phone frame
+            ctx.fillStyle = '#2c3e50';
+            ctx.fillRect(0, 0, 400, 800);
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(20, 40, 360, 720);
+            
+            // Screen
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(40, 60, 320, 680);
+            
+            // Header
+            ctx.fillStyle = '#667eea';
+            ctx.fillRect(40, 60, 320, 60);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 18px Arial';
+            ctx.fillText('JobFinder', 60, 95);
+            
+            // Menu button
+            ctx.fillStyle = 'white';
+            ctx.fillRect(320, 75, 30, 20);
+            ctx.fillStyle = '#667eea';
+            ctx.font = '12px Arial';
+            ctx.fillText('☰', 330, 88);
+            
+            // Search section
+            ctx.fillStyle = 'white';
+            ctx.fillRect(60, 140, 280, 80);
+            ctx.strokeStyle = '#ddd';
+            ctx.strokeRect(60, 140, 280, 80);
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 16px Arial';
+            ctx.fillText('Search Jobs', 80, 165);
+            ctx.strokeRect(80, 175, 240, 30);
+            ctx.font = '12px Arial';
+            ctx.fillText('Job title, keywords...', 90, 195);
+            
+            // Job cards (mobile)
+            const mobileJobs = [
+                { title: 'React Developer', company: 'TechCorp', salary: '₹8-12L' },
+                { title: 'Frontend Engineer', company: 'StartupXYZ', salary: '₹6-10L' },
+                { title: 'Full Stack Dev', company: 'InnovateTech', salary: '₹10-16L' },
+                { title: 'UI/UX Designer', company: 'DesignPro', salary: '₹5-9L' }
+            ];
+            
+            mobileJobs.forEach((job, i) => {
+                const y = 240 + (i * 110);
+                ctx.fillStyle = 'white';
+                ctx.fillRect(60, y, 280, 100);
+                ctx.strokeStyle = '#e9ecef';
+                ctx.strokeRect(60, y, 280, 100);
+                
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = 'bold 16px Arial';
+                ctx.fillText(job.title, 80, y + 25);
+                ctx.font = '14px Arial';
+                ctx.fillText(job.company, 80, y + 45);
+                ctx.fillStyle = '#28a745';
+                ctx.font = 'bold 14px Arial';
+                ctx.fillText(job.salary, 80, y + 65);
+                
+                // Apply button
+                ctx.fillStyle = '#007bff';
+                ctx.fillRect(250, y + 20, 70, 30);
+                ctx.fillStyle = 'white';
+                ctx.font = '12px Arial';
+                ctx.fillText('Apply', 270, y + 40);
+                
+                // Save button
+                ctx.fillStyle = '#6c757d';
+                ctx.fillRect(250, y + 55, 70, 25);
+                ctx.fillStyle = 'white';
+                ctx.font = '10px Arial';
+                ctx.fillText('Save', 275, y + 70);
+            });
+        }
+
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Generate all images when page loads
+        window.onload = function() {
+            createHomepage();
+            createJobSearch();
+            createSkillTest();
+            createResume();
+            createCareer();
+            createMobile();
+        };
+    </script>
+</body>
+</html>
